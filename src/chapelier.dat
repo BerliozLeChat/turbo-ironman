@@ -1,0 +1,16 @@
+/*
+Auteur : François Hallereau
+Date : 10 février 2015
+Licence 3 informatique
+Université de Nantes
+*/
+
+param lastAtelier := 2;
+param lastCasquette := 2;
+
+param profitCasquette := 1 12 2 20;
+
+param heures := 1 400 2 800;
+param duree : 1 2 :=
+			1 0.2 0.4
+			2 0.2 0.6;
