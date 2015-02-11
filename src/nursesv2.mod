@@ -19,6 +19,7 @@ param minNurses{Horaires}; #nombre minimal d'infirmières par tranche horaire
 
 var nurses{Horaires} >=0 integer; #nombre d'infirmière commençant leur journée à une tranche horaire
 var nursesSup{Horaires} >=0 integer; #nombre d'infirmière commençant leur journée à une tranche horaire
+
 #fonction objective
 
 minimize profit : sum{i in Horaires}nurses[i];
@@ -33,4 +34,5 @@ s.t. ctr_Total : sum{i in Horaires}nurses[i]<=80;
 
 # Affichage des résultats
 	display : nurses;	# affichage des variables
+	display : nursesSup;	# affichage des variables
 	display : 'z=',sum{i in Horaires}nurses[i]; # affichage de la valeur optimale
