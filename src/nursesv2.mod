@@ -22,12 +22,13 @@ var nursesSup{Horaires} >=0 integer; #nombre d'infirmière commençant leur jour
 
 #fonction objective
 
-minimize profit : sum{i in Horaires}nurses[i];
+minimize profit : sum{i in Horaires}nursesSup[i];
 
 #Les contraintes
-s.t. ctr_Sup{i in Horaires} : nursesSup[i]<=nurses[i];
-s.t. ctr_Nurses{i in Horaires} :  nurses[i]+nurses[(i+11)mod(12)]+nurses[(i+9)mod(12)]+nurses[(i+8)mod(12)]+nursesSup[(i+7)mod(12)]>= minNurses[i];
 s.t. ctr_Total : sum{i in Horaires}nurses[i]<=80;
+s.t. ctr_Sup{i in Horaires} : nursesSup[i]<=nurses[i];
+s.t. ctr_Nurses{i in Horaires} :  nurses[i]+nurses[((i+11)mod(12))]+nurses[((i+9)mod(12))]+nurses[((i+8)mod(12))]+nursesSup[((i+7)mod(12))]>= minNurses[i];
+
 
 # Résolution (qui est ajoutée en fin de fichier si on ne le précise pas)
 	solve;
@@ -35,4 +36,4 @@ s.t. ctr_Total : sum{i in Horaires}nurses[i]<=80;
 # Affichage des résultats
 	display : nurses;	# affichage des variables
 	display : nursesSup;	# affichage des variables
-	display : 'z=',sum{i in Horaires}nurses[i]; # affichage de la valeur optimale
+	display : 'z=',sum{i in Horaires}nursesSup[i]; # affichage de la valeur optimale
